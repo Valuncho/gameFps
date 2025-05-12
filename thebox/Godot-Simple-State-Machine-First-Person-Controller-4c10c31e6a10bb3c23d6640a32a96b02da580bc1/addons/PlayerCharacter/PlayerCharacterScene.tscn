@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=22 format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/PlayerCharacterScript.gd" id="1_h128t"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/Camera/CameraScript.gd" id="2_x12n0"]
+[ext_resource type="Texture2D" uid="uid://ddkm0ldq4kfjn" path="res://Arma1/pist_deagle.tga" id="3_po87l"]
+[ext_resource type="ArrayMesh" uid="uid://bi8d41eppa5ug" path="res://Arma1/deagle.obj" id="3_s2kx8"]
 [ext_resource type="Script" uid="uid://dx02l6p6behb8" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/UI/HUDScript.gd" id="16_5jm78"]
 [ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/Arts/Ticketing.ttf" id="17_ryxgj"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/StateMachineScript.gd" id="54_e0r17"]
@@ -21,6 +23,9 @@ point_count = 2
 _limits = [0.0, 30.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2vka"]
+albedo_texture = ExtResource("3_po87l")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
 
@@ -108,6 +113,12 @@ current = true
 fov = 90.0
 near = 0.01
 far = 1000.0
+
+[node name="Deagle" type="MeshInstance3D" parent="CameraHolder/Camera"]
+transform = Transform3D(-0.0999945, 0.00104718, 0, -0.00104718, -0.0999945, 0, 0, 0, 0.1, 0.76024, -0.435802, -0.123091)
+material_override = SubResource("StandardMaterial3D_q2vka")
+mesh = ExtResource("3_s2kx8")
+skeleton = NodePath("../../..")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5yjma")
