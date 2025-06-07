@@ -61,4 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 0.709927, 0.704275, 0, -0.704275, 0.709927, 
 shadow_enabled = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_c6gwx")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.7017, 0.185603, -1.10225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7017, 1.40327, -1.10225)
+
+[node name="BulletsContainer" type="Node3D" parent="."]

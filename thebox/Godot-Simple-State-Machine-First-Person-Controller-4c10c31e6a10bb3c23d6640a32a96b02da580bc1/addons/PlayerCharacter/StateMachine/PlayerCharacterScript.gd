@@ -94,6 +94,10 @@ func _ready():
 	
 func _process(_delta: float):
 	displayProperties()
+	if Input.is_action_just_pressed(shootAction):
+		shoot()
+	
+
 	
 func _physics_process(_delta : float):
 	modifyPhysicsProperties()
@@ -118,3 +122,22 @@ func gravityApply(delta : float):
 	#otherwise, apply fall gravity
 	if velocity.y >= 0.0: velocity.y += jumpGravity * delta
 	elif velocity.y < 0.0: velocity.y += fallGravity * delta
+
+#Codigo Valen
+@export var bulletScene: PackedScene
+@onready var bulletSpawnPoint: Node3D = $CameraHolder/Camera/Deagle/BulletSpawnPoint
+@export var shootAction: String = "shoot"
+
+func shoot():
+	if bulletScene == null or bulletSpawnPoint == null:
+		print("bulletScene o bulletSpawnPoint es null")
+		return
+
+	var bullet = bulletScene.instantiate()
+	bullet.global_transform = bulletSpawnPoint.global_transform
+
+	var bullets_container = get_tree().current_scene.get_node("BulletsContainer")
+	if bullets_container != null:
+		bullets_container.add_child(bullet)
+	else:
+		print("No se encontró 'BulletsContainer' en la escena actual.")

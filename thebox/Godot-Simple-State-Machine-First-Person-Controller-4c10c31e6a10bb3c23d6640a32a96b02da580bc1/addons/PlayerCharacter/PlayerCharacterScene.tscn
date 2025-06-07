@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=23 format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/PlayerCharacterScript.gd" id="1_h128t"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/Camera/CameraScript.gd" id="2_x12n0"]
 [ext_resource type="Texture2D" uid="uid://ddkm0ldq4kfjn" path="res://Arma1/pist_deagle.tga" id="3_po87l"]
 [ext_resource type="ArrayMesh" uid="uid://bi8d41eppa5ug" path="res://Arma1/deagle.obj" id="3_s2kx8"]
+[ext_resource type="PackedScene" uid="uid://bwhe20jcbcyli" path="res://bullet.tscn" id="14_q2vka"]
 [ext_resource type="Script" uid="uid://dx02l6p6behb8" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/UI/HUDScript.gd" id="16_5jm78"]
 [ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/Arts/Ticketing.ttf" id="17_ryxgj"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/StateMachineScript.gd" id="54_e0r17"]
@@ -88,6 +89,7 @@ moveRightAction = "moveRight"
 runAction = "run"
 crouchAction = "crouch"
 jumpAction = "jump"
+bulletScene = ExtResource("14_q2vka")
 
 [node name="CameraHolder" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.55, 0)
@@ -115,10 +117,13 @@ near = 0.01
 far = 1000.0
 
 [node name="Deagle" type="MeshInstance3D" parent="CameraHolder/Camera"]
-transform = Transform3D(-0.0999945, 0.00104718, 0, -0.00104718, -0.0999945, 0, 0, 0, 0.1, 0.76024, -0.435802, -0.123091)
+transform = Transform3D(-0.0499973, 0.000523589, 0, -0.000523589, -0.0499973, 0, 0, 0, 0.05, -0.0596204, -0.317147, -0.467552)
 material_override = SubResource("StandardMaterial3D_q2vka")
 mesh = ExtResource("3_s2kx8")
 skeleton = NodePath("../../..")
+
+[node name="BulletSpawnPoint" type="Node3D" parent="CameraHolder/Camera/Deagle"]
+transform = Transform3D(9.99999, 0, 0, 0, -10, 8.74227e-07, 0, -8.74227e-07, -9.99999, -1.21086, -3.66518, -14.5603)
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5yjma")
