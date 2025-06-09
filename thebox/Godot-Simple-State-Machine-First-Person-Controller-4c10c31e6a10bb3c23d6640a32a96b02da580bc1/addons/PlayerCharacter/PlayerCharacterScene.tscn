@@ -117,13 +117,13 @@ near = 0.01
 far = 1000.0
 
 [node name="Deagle" type="MeshInstance3D" parent="CameraHolder/Camera"]
-transform = Transform3D(-0.0499973, 0.000523589, 0, -0.000523589, -0.0499973, 0, 0, 0, 0.05, -0.0596204, -0.317147, -0.467552)
+transform = Transform3D(-0.0499973, 0.000523589, 0, -0.000523589, -0.0499973, 0, 0, 0, 0.05, 0.517682, -0.304999, -0.140176)
 material_override = SubResource("StandardMaterial3D_q2vka")
 mesh = ExtResource("3_s2kx8")
 skeleton = NodePath("../../..")
 
 [node name="BulletSpawnPoint" type="Node3D" parent="CameraHolder/Camera/Deagle"]
-transform = Transform3D(9.99999, 0, 0, 0, -10, 8.74227e-07, 0, -8.74227e-07, -9.99999, -1.21086, -3.66518, -14.5603)
+transform = Transform3D(9.99999, 7.45058e-09, 2.84217e-14, 0, -10, 8.74227e-07, -2.84217e-14, -8.74227e-07, -9.99999, -1.21086, -3.66518, -14.1459)
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5yjma")
