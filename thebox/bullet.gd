@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var speed: float = 30.0
-@export var damage: int = 1
+@export var damage: int = 50
 
 func _process(delta: float) -> void:
 	global_position += global_transform.basis.z * speed * delta

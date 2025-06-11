@@ -8,6 +8,8 @@ class_name HUD
 @onready var velocityLT = $PlayCharInfos/VBoxContainer2/VelocityLabelText
 @onready var nbJumpsInAirAllowedLT = $PlayCharInfos/VBoxContainer2/NbJumpsInAirAllowedLabelText
 @onready var framesPerSecondLT = $PlayCharInfos2/VBoxContainer2/FramesPerSecondLabelText
+@onready var healthBar: ProgressBar = $HealthBar
+ 
 
 func _process(_delta):
 	displayCurrentFPS()
@@ -26,8 +28,6 @@ func displayNbJumpsInAirAllowed(nbJumpsInAirAllowed : int):
 	
 func displayCurrentFPS():
 	framesPerSecondLT.set_text(str(Engine.get_frames_per_second()))
-	
-	
-	
-	
-	
+
+func update_health(current: int) -> void:
+	healthBar.value = current

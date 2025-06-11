@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=24 format=3 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/PlayerCharacterScript.gd" id="1_h128t"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/Camera/CameraScript.gd" id="2_x12n0"]
@@ -28,8 +28,6 @@ point_count = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2vka"]
 albedo_texture = ExtResource("3_po87l")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bkys"]
 albedo_color = Color(0.196078, 0.223529, 1, 1)
 
@@ -49,7 +47,11 @@ font_size = 30
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PlayerCharacter" type="CharacterBody3D" groups=["PlayerCharacter"]]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q2vka"]
+
+[node name="PlayerCharacter" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 97
 floor_block_on_wall = false
@@ -125,9 +127,6 @@ skeleton = NodePath("../../..")
 [node name="BulletSpawnPoint" type="Node3D" parent="CameraHolder/Camera/Deagle"]
 transform = Transform3D(9.99999, 7.45058e-09, 2.84217e-14, 0, -10, 8.74227e-07, -2.84217e-14, -8.74227e-07, -9.99999, -1.21086, -3.66518, -14.1459)
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_5yjma")
-
 [node name="Model" type="MeshInstance3D" parent="."]
 layers = 2
 material_override = SubResource("StandardMaterial3D_6bkys")
@@ -174,7 +173,7 @@ metadata/_custom_type_script = "uid://bh3rdvokmrar1"
 script = ExtResource("60_tu3bf")
 metadata/_custom_type_script = "uid://bhoqhv7escpyx"
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." groups=["PlayerCharacter"]]
 script = ExtResource("16_5jm78")
 metadata/_edit_use_anchors_ = true
 
@@ -295,3 +294,24 @@ theme_override_font_sizes/font_size = 40
 text = "....."
 label_settings = SubResource("LabelSettings_3aho1")
 vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+layout_direction = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 151.0
+grow_vertical = 0
+value = 100.0
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5yjma")
+
+[node name="HitboxArea" type="Area3D" parent="." groups=["PlayerCharacter"]]
+collision_layer = 2
+
+[node name="HitboxDetection" type="CollisionShape3D" parent="HitboxArea"]
+shape = SubResource("CapsuleShape3D_q2vka")
+
+[connection signal="area_entered" from="HitboxArea" to="." method="_on_hitbox_area_area_entered"]

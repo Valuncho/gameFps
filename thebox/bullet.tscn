@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2b2rl"]
 radius = 0.3
-height = 1.0
+height = 1.12513
 
 [node name="Bullet" type="Area3D"]
 script = ExtResource("1_v8qja")

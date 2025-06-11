@@ -91,7 +91,11 @@ func _ready():
 	jumpCooldownRef = jumpCooldown
 	nbJumpsInAirAllowedRef = nbJumpsInAirAllowed
 	coyoteJumpCooldownRef = coyoteJumpCooldown
-	
+	# Inicializar vida y actualizar HUD
+	current_health = max_health
+	hud.update_health(current_health)
+	add_to_group("PlayerCharacter")
+
 func _process(_delta: float):
 	displayProperties()
 	if Input.is_action_just_pressed(shootAction):
@@ -142,4 +146,25 @@ func shoot():
 	else:
 		print("No se encontró 'BulletsContainer' en la escena actual.")
 
-# Codigo de daño de bala
+# Vida del Jugador
+
+@export var max_health: int = 100
+var current_health: int
+
+func take_damage(amount: int):
+	current_health -= amount
+	current_health = clamp(current_health, 0, max_health)
+	print("Vida actual del jugador:", current_health)  # <-- para debug
+	hud.update_health(current_health)
+	if current_health <= 0:
+		die()
+
+
+func die():
+	print("El jugador ha muerto.")
+	# Acá podrías reiniciar nivel, reproducir animación, etc.
+
+
+func _on_hitbox_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("enemy_attack"):
+		take_damage(10)  # o la cantidad que corresponda
