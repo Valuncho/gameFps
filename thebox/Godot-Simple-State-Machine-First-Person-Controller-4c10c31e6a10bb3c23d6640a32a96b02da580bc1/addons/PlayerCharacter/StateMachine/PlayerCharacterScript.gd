@@ -141,3 +141,5 @@ func shoot():
 		bullets_container.add_child(bullet)
 	else:
 		print("No se encontró 'BulletsContainer' en la escena actual.")
+
+# Codigo de daño de bala
