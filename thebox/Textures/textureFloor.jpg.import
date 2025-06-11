@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b08rpa665jb75"
-path.s3tc="res://.godot/imported/grid_black_1024x1024.png-0acc8385a694bc6ebb4caecb832f07d8.s3tc.ctex"
+uid="uid://b3wvkmlt2gcu8"
+path.s3tc="res://.godot/imported/textureFloor.jpg-5b6b071776de4c7c8a12f1e394c4ab1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/Arts/godot-prototype-texture/PNG/grid_1024x1024/grid_black_1024x1024.png"
-dest_files=["res://.godot/imported/grid_black_1024x1024.png-0acc8385a694bc6ebb4caecb832f07d8.s3tc.ctex"]
+source_file="res://Textures/textureFloor.jpg"
+dest_files=["res://.godot/imported/textureFloor.jpg-5b6b071776de4c7c8a12f1e394c4ab1b.s3tc.ctex"]
 
 [params]
 

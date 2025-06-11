@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://qan86d2orwq1"]
+
+[ext_resource type="Script" uid="uid://dcv2ex32kjtyx" path="res://Enemy/EnemyMelee.gd" id="1_ksnk0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px1sc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_am0pq"]
+material = SubResource("StandardMaterial3D_px1sc")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eqilm"]
+
+[node name="EnemyMelee" type="CharacterBody3D"]
+script = ExtResource("1_ksnk0")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_am0pq")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_eqilm")

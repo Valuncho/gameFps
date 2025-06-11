@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1xdhbuqpequp"]
+
+[ext_resource type="Script" uid="uid://bxv6p5ekr32mw" path="res://ScriptsBase/EnemyBase.gd" id="1_gjhpl"]
+
+[node name="NodeBase" type="Node3D"]
+script = ExtResource("1_gjhpl")

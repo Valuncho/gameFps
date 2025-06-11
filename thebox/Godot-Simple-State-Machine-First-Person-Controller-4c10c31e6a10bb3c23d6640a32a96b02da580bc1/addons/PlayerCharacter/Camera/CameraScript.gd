@@ -61,7 +61,6 @@ func _process(delta):
 	
 	cameraBob(delta)
 	
-	cameraTilt(delta)
 	
 	mouseMode()
 	
@@ -86,10 +85,6 @@ func headbob(time):
 	pos.x = cos(time * bobFrequency / 4) * bobAmplitude
 	return pos
 	
-func cameraTilt(delta): 
-	#tmanage the camera tilting when the character is moving on the x axis (left and right)
-	if !playChar.is_on_floor(): rotation.z = lerp(rotation.z, -playChar.inputDirection.x * camTiltRotationValue/onFloorTiltValDivider, camTiltRotationSpeed * delta)
-	else: rotation.z = lerp(rotation.z, -playChar.inputDirection.x * camTiltRotationValue, camTiltRotationSpeed * delta)
 
 func mouseMode():
 	#manage the mouse mode (visible = can use mouse on the screen, captured = mouse not visible and locked in at the center of the screen)
