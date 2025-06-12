@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnl7xm0sqpgno"]
+[gd_scene load_steps=8 format=3 uid="uid://dnl7xm0sqpgno"]
 
 [ext_resource type="Texture2D" uid="uid://b08rpa665jb75" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/Arts/godot-prototype-texture/PNG/grid_1024x1024/grid_black_1024x1024.png" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/PlayerCharacterScene.tscn" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://qan86d2orwq1" path="res://Enemy/EnemyMelee.tscn" id="3_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://b6vjqg5pbb1c" path="res://Enemy/EnemySpawner.tscn" id="4_js7pq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6gwx"]
 albedo_texture = ExtResource("1_2dftf")
@@ -72,3 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7017, 1.6521, -1.10225)
 
 [node name="EnemyMelee" parent="." instance=ExtResource("3_bcbcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7835, 1.65444, 6.04863)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_js7pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4465, 2.56415, 0)
