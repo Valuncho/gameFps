@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnl7xm0sqpgno"]
+[gd_scene load_steps=12 format=3 uid="uid://dnl7xm0sqpgno"]
 
-[ext_resource type="Texture2D" uid="uid://b08rpa665jb75" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/Arts/godot-prototype-texture/PNG/grid_1024x1024/grid_black_1024x1024.png" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/PlayerCharacterScene.tscn" id="1_c6gwx"]
+[ext_resource type="Texture2D" uid="uid://r7dnjxeqfsbh" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Color.jpg" id="1_wygdx"]
+[ext_resource type="Texture2D" uid="uid://cgf7udvnrkd18" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_AmbientOcclusion.jpg" id="2_bah7m"]
 [ext_resource type="PackedScene" uid="uid://qan86d2orwq1" path="res://Enemy/EnemyMelee.tscn" id="3_bcbcq"]
+[ext_resource type="Texture2D" uid="uid://chvfv1q6m04f5" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_NormalGL.jpg" id="3_fv4w7"]
+[ext_resource type="Texture2D" uid="uid://vl1t8wul6wpq" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Roughness.jpg" id="4_fvag4"]
 [ext_resource type="PackedScene" uid="uid://b6vjqg5pbb1c" path="res://Enemy/EnemySpawner.tscn" id="4_js7pq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6gwx"]
-albedo_texture = ExtResource("1_2dftf")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kva58"]
+albedo_texture = ExtResource("1_wygdx")
+roughness_texture = ExtResource("4_fvag4")
+normal_enabled = true
+normal_texture = ExtResource("3_fv4w7")
+ao_enabled = true
+ao_texture = ExtResource("2_bah7m")
 uv1_triplanar = true
-uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js7pq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dftf"]
 albedo_color = Color(0.0431373, 0, 0, 1)
@@ -25,13 +33,13 @@ albedo_color = Color(1, 1, 0, 1)
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -3.03631, 0.0058735, 0.907408)
 use_collision = true
 size = Vector3(19.3268, 0.0981445, 15.891)
-material = SubResource("StandardMaterial3D_c6gwx")
+material = SubResource("StandardMaterial3D_kva58")
 
 [node name="Wall" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -3.17037, 1.90313, -114.39)
+transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -3.17037, 1.90313, -111.92)
 use_collision = true
 size = Vector3(19.088, 4.0791, 1.49902)
-material = SubResource("StandardMaterial3D_2dftf")
+material = SubResource("StandardMaterial3D_js7pq")
 
 [node name="Wall2" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, -3.17037, 1.90313, 113.461)
@@ -55,15 +63,15 @@ size = Vector3(2.10738, 4.0791, 18.89)
 material = SubResource("StandardMaterial3D_2dftf")
 
 [node name="Hole" type="CSGCylinder3D" parent="Environment/CSGCombiner3D"]
-transform = Transform3D(0.540787, -9.98537, 0, 9.98537, 0.540787, 0, 0, 0, 10, -150.522, 16.5992, 0.0654233)
+transform = Transform3D(0.540787, -9.98537, 0, 9.98537, 0.540787, 0, 0, 0, 10, -142.681, 16.1745, 0.0654233)
 operation = 2
 radius = 0.626953
-height = 5.16556
+height = 3.59499
 material = SubResource("StandardMaterial3D_bcbcq")
 metadata/_edit_group_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.709927, 0.704275, 0, -0.704275, 0.709927, 0, -0.500827, 1.21878)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.1465, 1.21878)
 shadow_enabled = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_c6gwx")]

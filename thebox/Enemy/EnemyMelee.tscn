@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eqilm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px1sc"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_am0pq"]
 material = SubResource("StandardMaterial3D_px1sc")
