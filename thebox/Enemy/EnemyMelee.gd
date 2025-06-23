@@ -15,8 +15,13 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("PlayerCharacter"):
 		if body.has_method("take_damage"):
 			body.take_damage(10)
-		else:
-			print("Jugador no tiene método take_damage")
+
+			# Empuje
+			var push_direction = (body.global_transform.origin - global_transform.origin).normalized()
+			var push_force = 100 #modificar la fuerza
+			body.velocity += push_direction * push_force
+
+
 
 func _on_Hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("player_attack"):

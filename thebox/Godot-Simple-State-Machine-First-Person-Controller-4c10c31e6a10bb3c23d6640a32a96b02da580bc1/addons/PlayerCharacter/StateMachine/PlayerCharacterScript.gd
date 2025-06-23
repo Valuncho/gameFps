@@ -81,6 +81,17 @@ var coyoteJumpOn : bool = false
 @onready var ceilingCheck : RayCast3D = $Raycasts/CeilingCheck
 @onready var floorCheck : RayCast3D = $Raycasts/FloorCheck
 
+# -- Manejo de armas --
+@onready var weapon_slot_1: Node3D = $CameraHolder/Camera/WeaponSlot1
+@onready var weapon_slot_2: Node3D = $CameraHolder/Camera/WeaponSlot2
+
+@export var starting_weapon_scene: PackedScene  # arma inicial (ej: pistola)
+@export var second_weapon_scene: PackedScene    # segunda arma (ej: rifle)
+
+var weapons = [null, null]  # Array para guardar armas en slot 0 y 1
+var current_weapon: WeaponBase = null
+var current_slot_index: int = 0
+
 func _ready():
 	#set move variables, and value references
 	moveSpeed = walkSpeed
@@ -91,23 +102,58 @@ func _ready():
 	jumpCooldownRef = jumpCooldown
 	nbJumpsInAirAllowedRef = nbJumpsInAirAllowed
 	coyoteJumpCooldownRef = coyoteJumpCooldown
+	
 	# Inicializar vida y actualizar HUD
 	current_health = max_health
 	hud.update_health(current_health)
 	add_to_group("PlayerCharacter")
+	
+	# -- Instanciar armas y configurar --
+	# Instanciar arma 1 y agregar al slot 1
+	var weapon1 = starting_weapon_scene.instantiate()
+	weapon_slot_1.add_child(weapon1)
+	weapons[0] = weapon1
+
+	# PASAR LA REFERENCIA DE LA CÁMARA
+	weapon1.set_camera(camHolder.get_node("Camera"))
+
+	weapon1.equip()
+	weapon1.visible = true
+
+	# Lo mismo para arma 2
+	var weapon2 = second_weapon_scene.instantiate()
+	weapon_slot_2.add_child(weapon2)
+	weapons[1] = weapon2
+
+	weapon2.set_camera(camHolder.get_node("Camera"))
+
+	weapon2.unequip()
+	weapon2.visible = false
+
+	current_slot_index = 0
+	current_weapon = weapon1
+
 
 func _process(_delta: float):
 	displayProperties()
-	if Input.is_action_just_pressed(shootAction):
-		shoot()
 	
+	# Delega el input al arma actual
+	if current_weapon:
+		current_weapon.handle_input()
 
-	
+	# Cambiar arma con teclas (ejemplo: 1 y 2)
+	if Input.is_action_just_pressed("weapon_1"):
+		switch_weapon(0)
+	elif Input.is_action_just_pressed("weapon_2"):
+		switch_weapon(1)
+
+
+
 func _physics_process(_delta : float):
 	modifyPhysicsProperties()
-	
 	move_and_slide()
-	
+
+
 func displayProperties():
 	#display properties on the hud
 	if hud != null:
@@ -116,38 +162,23 @@ func displayProperties():
 		hud.displayVelocity(velocity.length())
 		hud.displayNbJumpsInAirAllowed(nbJumpsInAirAllowed)
 		
+
 func modifyPhysicsProperties():
 	lastFramePosition = position #get play char position every frame
 	lastFrameVelocity = velocity #get play char velocity every frame
 	wasOnFloor = !is_on_floor() #check if play char was on floor every frame
 	
+
 func gravityApply(delta : float):
 	#if play char goes up, apply jump gravity
 	#otherwise, apply fall gravity
 	if velocity.y >= 0.0: velocity.y += jumpGravity * delta
 	elif velocity.y < 0.0: velocity.y += fallGravity * delta
 
+
 #Codigo Valen
-@export var bulletScene: PackedScene
-@onready var bulletSpawnPoint: Node3D = $CameraHolder/Camera/Deagle/BulletSpawnPoint
-@export var shootAction: String = "shoot"
-
-func shoot():
-	if bulletScene == null or bulletSpawnPoint == null:
-		print("bulletScene o bulletSpawnPoint es null")
-		return
-
-	var bullet = bulletScene.instantiate()
-	bullet.global_transform = bulletSpawnPoint.global_transform
-
-	var bullets_container = get_tree().current_scene.get_node("BulletsContainer")
-	if bullets_container != null:
-		bullets_container.add_child(bullet)
-	else:
-		print("No se encontró 'BulletsContainer' en la escena actual.")
 
 # Vida del Jugador
-
 @export var max_health: int = 100
 var current_health: int
 
@@ -162,9 +193,30 @@ func take_damage(amount: int):
 
 func die():
 	print("El jugador ha muerto.")
-	# Acá podrías reiniciar nivel, reproducir animación, etc.
+	# Aca podes reiniciar nivel, reproducir animacion, etc.
 
 
 func _on_hitbox_area_area_entered(area: Area3D) -> void:
 	if area.is_in_group("enemy_attack"):
 		take_damage(10)  # o la cantidad que corresponda
+
+
+# -- FUNCIONES NUEVAS para cambio de armas --
+
+func switch_weapon(slot_index: int):
+	if slot_index == current_slot_index:
+		return  # ya está equipado
+	
+	if slot_index < 0 or slot_index >= weapons.size():
+		return  # índice inválido
+	
+	# Desequipar arma actual
+	if current_weapon:
+		current_weapon.unequip()
+		current_weapon.visible = false  # ocultar
+	
+	# Equipar arma nueva
+	current_slot_index = slot_index
+	current_weapon = weapons[slot_index]
+	current_weapon.equip()
+	current_weapon.visible = true

@@ -63,7 +63,7 @@ material = SubResource("StandardMaterial3D_bcbcq")
 metadata/_edit_group_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.709927, 0.704275, 0, -0.704275, 0.709927, 0, 0.451703, 1.21878)
+transform = Transform3D(1, 0, 0, 0, 0.709927, 0.704275, 0, -0.704275, 0.709927, 0, -0.500827, 1.21878)
 shadow_enabled = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_c6gwx")]
