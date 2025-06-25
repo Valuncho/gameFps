@@ -14,6 +14,8 @@ func _ready():
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func handle_input():
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 	if Input.is_action_pressed("shoot"):
 		if shoot_timer.is_stopped():
 			shoot_timer.start()
