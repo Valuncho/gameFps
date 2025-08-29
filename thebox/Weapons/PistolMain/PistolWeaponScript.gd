@@ -23,3 +23,7 @@ func shoot():
 func handle_input():
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+
+
+func unequip():
+	pass

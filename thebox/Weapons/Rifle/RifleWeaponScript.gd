@@ -37,3 +37,8 @@ func shoot():
 	var bullets_container = get_tree().current_scene.get_node("BulletsContainer")
 	if bullets_container:
 		bullets_container.add_child(bullet)
+
+func unequip():
+	if !shoot_timer.is_stopped():
+		shoot_timer.stop()
+	

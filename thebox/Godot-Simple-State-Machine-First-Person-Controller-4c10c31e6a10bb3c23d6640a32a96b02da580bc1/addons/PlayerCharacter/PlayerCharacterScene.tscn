@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=25 format=4 uid="uid://bwggrf7sbmkcv"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/PlayerCharacterScript.gd" id="1_h128t"]
 [ext_resource type="PackedScene" uid="uid://dr1pj5xbjvmhk" path="res://Weapons/PistolMain/PistolSpawn.tscn" id="2_s2kx8"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/Camera/CameraScript.gd" id="2_x12n0"]
 [ext_resource type="PackedScene" uid="uid://drmkks3ukxuoa" path="res://Weapons/Rifle/RifleWeapon.tscn" id="3_po87l"]
+[ext_resource type="Script" uid="uid://bd5462w85sclv" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/CrosshairScript.gd" id="13_po87l"]
 [ext_resource type="Script" uid="uid://dx02l6p6behb8" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/UI/HUDScript.gd" id="16_5jm78"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/StateMachineScript.gd" id="54_e0r17"]
 [ext_resource type="Script" uid="uid://stil4xkf3tk0" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/StateMachine/IdleStateScript.gd" id="55_dayh2"]
@@ -398,10 +399,10 @@ near = 0.01
 far = 1000.0
 
 [node name="WeaponSlot1" type="Node3D" parent="CameraHolder/Camera"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.437, -0.269, -0.587)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.672921, -0.269, -0.587)
 
 [node name="WeaponSlot2" type="Node3D" parent="CameraHolder/Camera"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.436513, -0.269428, -0.586538)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.673, -0.269, -0.587)
 
 [node name="Model" type="MeshInstance3D" parent="."]
 layers = 2
@@ -461,6 +462,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("13_po87l")
 
 [node name="PlayCharInfos" type="HBoxContainer" parent="HUD"]
 offset_top = 7.0

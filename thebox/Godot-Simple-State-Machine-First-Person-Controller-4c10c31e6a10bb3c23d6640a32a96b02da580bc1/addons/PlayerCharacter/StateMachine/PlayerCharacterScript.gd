@@ -201,21 +201,20 @@ func _on_hitbox_area_area_entered(area: Area3D) -> void:
 		take_damage(10)  # o la cantidad que corresponda
 
 
-# -- FUNCIONES NUEVAS para cambio de armas --
-
+# cambio de armas
 func switch_weapon(slot_index: int):
 	if slot_index == current_slot_index:
-		return  # ya está equipado
+		return
 	
 	if slot_index < 0 or slot_index >= weapons.size():
-		return  # índice inválido
+		return
 	
-	# Desequipar arma actual
+	# desequipar arma actual
 	if current_weapon:
 		current_weapon.unequip()
-		current_weapon.visible = false  # ocultar
+		current_weapon.visible = false
 	
-	# Equipar arma nueva
+	# equipar arma nueva
 	current_slot_index = slot_index
 	current_weapon = weapons[slot_index]
 	current_weapon.equip()
