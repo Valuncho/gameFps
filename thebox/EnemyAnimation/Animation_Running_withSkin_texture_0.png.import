@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nitw3cxh3siu"
-path.s3tc="res://.godot/imported/Animation_Running_withSkin_texture_0.png-ba178e9b794ad7da9bf318850a624be7.s3tc.ctex"
+path.s3tc="res://.godot/imported/Animation_Running_withSkin_texture_0.png-d025b668dfe5c7b8d1288ad02ef5880f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://EnemyTextures/Animation_Running_withSkin_texture_0.png"
-dest_files=["res://.godot/imported/Animation_Running_withSkin_texture_0.png-ba178e9b794ad7da9bf318850a624be7.s3tc.ctex"]
+source_file="res://EnemyAnimation/Animation_Running_withSkin_texture_0.png"
+dest_files=["res://.godot/imported/Animation_Running_withSkin_texture_0.png-d025b668dfe5c7b8d1288ad02ef5880f.s3tc.ctex"]
 
 [params]
 

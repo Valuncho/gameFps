@@ -20,22 +20,16 @@ func _ready():
 		# Obtener AnimationPlayer
 		if enemy_model_instance.has_node("AnimationPlayer"):
 			anim_player = enemy_model_instance.get_node("AnimationPlayer")
-			anim_player.play("Animation")
+			anim_player.play("Armature|running|baselayer")
  
 
 func _physics_process(delta):
-	var direction = (player.global_transform.origin - global_transform.origin).normalized()
+	var target_pos = player.global_transform.origin
+	var my_pos = global_transform.origin
+	target_pos.y = my_pos.y
+	var direction = (target_pos - my_pos).normalized()
 	velocity = direction * speed
 	move_and_slide()
-
-	# Animacion segun movimiento
-	if anim_player:
-		if velocity.length() > 0.1:
-			if anim_player.current_animation != "Running":
-				anim_player.play("Running")
-		else:
-			if anim_player.current_animation != "Idle":
-				anim_player.play("Idle")
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("PlayerCharacter"):
