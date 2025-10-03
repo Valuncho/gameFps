@@ -15,7 +15,7 @@ func _ready():
 	if enemy_model_scene:
 		enemy_model_instance = enemy_model_scene.instantiate()
 		add_child(enemy_model_instance)
-		enemy_model_instance.transform.origin = Vector3.ZERO
+		enemy_model_instance.transform.origin = Vector3.DOWN
 
 		# Obtener AnimationPlayer
 		if enemy_model_instance.has_node("AnimationPlayer"):
@@ -28,8 +28,14 @@ func _physics_process(delta):
 	var my_pos = global_transform.origin
 	target_pos.y = my_pos.y
 	var direction = (target_pos - my_pos).normalized()
-	velocity = direction * speed
+	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed
 	move_and_slide()
+	if direction.length() > 0.01:
+		var target_rotation = Transform3D().looking_at(direction, Vector3.UP)
+		enemy_model_instance.rotation.y = target_rotation.basis.get_euler().y + deg_to_rad(180)
+
+
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("PlayerCharacter"):

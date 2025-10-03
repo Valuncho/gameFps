@@ -1,20 +1,20 @@
 [gd_scene load_steps=12 format=3 uid="uid://dnl7xm0sqpgno"]
 
-[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/PlayerCharacterScene.tscn" id="1_c6gwx"]
-[ext_resource type="Texture2D" uid="uid://r7dnjxeqfsbh" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Color.jpg" id="1_wygdx"]
-[ext_resource type="Texture2D" uid="uid://cgf7udvnrkd18" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_AmbientOcclusion.jpg" id="2_bah7m"]
-[ext_resource type="PackedScene" uid="uid://qan86d2orwq1" path="res://Enemy/EnemyMelee.tscn" id="3_bcbcq"]
-[ext_resource type="Texture2D" uid="uid://chvfv1q6m04f5" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_NormalGL.jpg" id="3_fv4w7"]
-[ext_resource type="Texture2D" uid="uid://vl1t8wul6wpq" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Roughness.jpg" id="4_fvag4"]
-[ext_resource type="PackedScene" uid="uid://b6vjqg5pbb1c" path="res://Enemy/EnemySpawner.tscn" id="4_js7pq"]
+[ext_resource type="Texture2D" uid="uid://r7dnjxeqfsbh" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Color.jpg" id="1_r7gxv"]
+[ext_resource type="Texture2D" uid="uid://cgf7udvnrkd18" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_AmbientOcclusion.jpg" id="2_s5iaw"]
+[ext_resource type="Texture2D" uid="uid://chvfv1q6m04f5" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_NormalGL.jpg" id="3_p780t"]
+[ext_resource type="Texture2D" uid="uid://vl1t8wul6wpq" path="res://Textures/Ground086_2K-JPG/Ground086_2K-JPG_Roughness.jpg" id="4_mm5ew"]
+[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://Godot-Simple-State-Machine-First-Person-Controller-4c10c31e6a10bb3c23d6640a32a96b02da580bc1/addons/PlayerCharacter/PlayerCharacterScene.tscn" id="5_57wt6"]
+[ext_resource type="PackedScene" uid="uid://qan86d2orwq1" path="res://Enemy/EnemyMelee.tscn" id="6_qh78d"]
+[ext_resource type="PackedScene" uid="uid://b6vjqg5pbb1c" path="res://Enemy/EnemySpawner.tscn" id="7_7erb8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kva58"]
-albedo_texture = ExtResource("1_wygdx")
-roughness_texture = ExtResource("4_fvag4")
+albedo_texture = ExtResource("1_r7gxv")
+roughness_texture = ExtResource("4_mm5ew")
 normal_enabled = true
-normal_texture = ExtResource("3_fv4w7")
+normal_texture = ExtResource("3_p780t")
 ao_enabled = true
-ao_texture = ExtResource("2_bah7m")
+ao_texture = ExtResource("2_s5iaw")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js7pq"]
@@ -75,13 +75,13 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.1465, 1.21878)
 shadow_enabled = true
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_c6gwx")]
+[node name="PlayerCharacter" parent="." instance=ExtResource("5_57wt6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7017, 1.6521, -1.10225)
 
 [node name="BulletsContainer" type="Node3D" parent="."]
 
-[node name="EnemyMelee" parent="." instance=ExtResource("3_bcbcq")]
+[node name="EnemyMelee" parent="." instance=ExtResource("6_qh78d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7835, 1.65444, 6.04863)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("4_js7pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4465, 2.56415, 0)
+[node name="EnemySpawner" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4465, 0.837741, 0)

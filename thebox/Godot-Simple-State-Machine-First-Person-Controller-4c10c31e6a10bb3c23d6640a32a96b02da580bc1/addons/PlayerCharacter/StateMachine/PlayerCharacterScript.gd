@@ -140,6 +140,7 @@ func _process(_delta: float):
 	# Delega el input al arma actual
 	if current_weapon:
 		current_weapon.handle_input()
+		hud.update_ammo(current_weapon)
 
 	# Cambiar arma con teclas (ejemplo: 1 y 2)
 	if Input.is_action_just_pressed("weapon_1"):
@@ -219,3 +220,4 @@ func switch_weapon(slot_index: int):
 	current_weapon = weapons[slot_index]
 	current_weapon.equip()
 	current_weapon.visible = true
+	hud.update_ammo(current_weapon)

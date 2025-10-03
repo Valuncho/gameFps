@@ -1,6 +1,25 @@
 extends Node3D
 class_name WeaponBase
 
+var current_ammo: int
+var is_reloading: bool = false
+
+func init_ammo(mag_size: int) -> void:
+	current_ammo = mag_size
+
+func reload(reload_time: float, mag_size: int) -> void:
+	if is_reloading:
+		return
+	is_reloading = true
+	print("Recargando...")
+	await get_tree().create_timer(reload_time).timeout
+	current_ammo = mag_size
+	is_reloading = false
+	print("Recarga completa")
+
+func can_shoot() -> bool:
+	return not is_reloading and current_ammo > 0
+
 func shoot():
 	print("")
 

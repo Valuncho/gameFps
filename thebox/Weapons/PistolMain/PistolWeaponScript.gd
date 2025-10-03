@@ -2,12 +2,22 @@ extends WeaponBase
 
 @export var bullet_scene: PackedScene
 @onready var bullet_spawn_point: Node3D = $Model/BulletSpawnPoint
-var camera: Camera3D
+@export var magazine_size: int = 10
+@export var reload_time: float = 1.5
 
+var camera: Camera3D
 func set_camera(cam: Camera3D):
 	camera = cam
 
+func _ready():
+	init_ammo(magazine_size)
+
 func shoot():
+	if not can_shoot():
+		if current_ammo <= 0:
+			reload(reload_time, magazine_size)
+		return
+	current_ammo -= 1
 	if bullet_scene == null or bullet_spawn_point == null or camera == null:
 		print("bullet_scene, bullet_spawn_point o camera es null")
 		return
@@ -18,6 +28,7 @@ func shoot():
 	var bullets_container = get_tree().current_scene.get_node("BulletsContainer")
 	if bullets_container:
 		bullets_container.add_child(bullet)
+	
 
 # Maneja input para disparo simple (solo dispara cuando se presiona, no mantiene)
 func handle_input():
