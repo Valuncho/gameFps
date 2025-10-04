@@ -88,6 +88,6 @@ func headbob(time):
 
 func mouseMode():
 	#manage the mouse mode (visible = can use mouse on the screen, captured = mouse not visible and locked in at the center of the screen)
-	if Input.is_action_just_pressed(mouseModeAction): mouseFree = !mouseFree
+	#if Input.is_action_just_pressed(mouseModeAction): mouseFree = !mouseFree
 	if !mouseFree: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

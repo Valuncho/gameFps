@@ -389,7 +389,6 @@ bobAmplitude = 0.15
 camTiltRotationValue = 0.35
 camTiltRotationSpeed = 2.2
 onFloorTiltValDivider = 1.6
-mouseModeAction = "mouseMode"
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 cull_mask = 3

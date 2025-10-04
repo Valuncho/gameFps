@@ -7,7 +7,6 @@ class_name EnemyBase
 @export var speed: float = 3.0
 
 func move_enemy(delta: float) -> void:
-	# Método virtual: las clases concretas lo implementan
 	pass
 
 func receive_damage(amount: int) -> void:

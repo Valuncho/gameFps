@@ -15,7 +15,7 @@ func set_camera(cam: Camera3D):
 func _ready():
 	init_ammo(magazine_size)
 	shoot_timer.wait_time = fire_rate
-	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	#shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func handle_input():
 	if Input.is_action_just_pressed("shoot"):

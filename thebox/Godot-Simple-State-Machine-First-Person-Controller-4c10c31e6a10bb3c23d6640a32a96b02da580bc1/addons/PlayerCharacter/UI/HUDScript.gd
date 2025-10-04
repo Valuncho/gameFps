@@ -13,7 +13,6 @@ class_name HUD
 var current_weapon = null
 
 func _process(_delta):
-	var current_weapon = null
 	displayCurrentFPS()
 
 func displayCurrentState(currentState : String):
