@@ -44,7 +44,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 			# Empuje
 			var push_direction = (body.global_transform.origin - global_transform.origin).normalized()
-			var push_force = 100 #modificar la fuerza
+			var push_force = 30 #modificar la fuerza
 			body.velocity += push_direction * push_force
 
 func _on_Hitbox_area_entered(area: Area3D) -> void:

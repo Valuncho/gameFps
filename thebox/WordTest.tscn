@@ -18,13 +18,13 @@ ao_texture = ExtResource("2_s5iaw")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js7pq"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.383124, 0.356718, 0.148236, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dftf"]
-albedo_color = Color(0.0431373, 0, 0, 1)
+albedo_color = Color(0.700045, 0.754509, 0.437238, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcbcq"]
-albedo_color = Color(1, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7gxv"]
+albedo_color = Color(0.0431373, 1, 0, 1)
 
 [node name="World" type="Node3D"]
 
@@ -63,13 +63,89 @@ use_collision = true
 size = Vector3(2.10738, 4.0791, 18.89)
 material = SubResource("StandardMaterial3D_2dftf")
 
-[node name="Hole" type="CSGCylinder3D" parent="Environment/CSGCombiner3D"]
-transform = Transform3D(0.540787, -9.98537, 0, 9.98537, 0.540787, 0, 0, 0, 10, -142.681, 16.1745, 0.0654233)
-operation = 2
-radius = 0.626953
-height = 3.59499
-material = SubResource("StandardMaterial3D_bcbcq")
-metadata/_edit_group_ = true
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.577, 7.6604, 0)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9223, 7.6604, 0)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.94, 7.6604, 0)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.94, 7.6604, 49.8265)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.94, 7.6604, -70.4988)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9223, 7.6604, -71.2792)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9223, 7.6604, 62.6294)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.577, 7.6604, -57.1974)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.577, 7.6604, 59.4737)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5437, 7.6604, 59.4737)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5437, 7.6604, -5.48383)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5437, 7.6604, -53.651)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4162, 7.6604, -53.651)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3777, 7.6604, -5.82589)
+radius = 3.41064
+height = 17.3208
+material = SubResource("StandardMaterial3D_r7gxv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.1465, 1.21878)
@@ -81,7 +157,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7017, 1.6521, -1.10225)
 [node name="BulletsContainer" type="Node3D" parent="."]
 
 [node name="EnemyMelee" parent="." instance=ExtResource("6_qh78d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7835, 1.65444, 6.04863)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.869, 1.65444, 0.69277)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_7erb8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4465, 0.837741, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.189, 0.837741, 0)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.189, 0.837741, -55.7705)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45222, 0.837741, -75.0541)
+
+[node name="EnemySpawner6" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.2653, 0.837741, -75.0541)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4465, 0.837741, 91.0814)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.039, 0.837741, 0)
+
+[node name="EnemySpawner7" parent="." instance=ExtResource("7_7erb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.039, 0.837741, 73.6181)
